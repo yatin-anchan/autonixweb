@@ -1,0 +1,1055 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+    <div class="hero-particles"></div>
+    <div class="container">
+        <div class="row align-items-center min-vh-100 py-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="hero-content">
+                    <div class="hero-badge mb-4">
+                        <span class="badge-glow">
+                            <i class="fas fa-shield-alt me-2"></i>INTELLIGENT SAFETY SYSTEM
+                        </span>
+                    </div>
+                    
+                    <h1 class="hero-title mb-4">
+                        <span class="text-gradient glitch-text" data-text="AUTONIX">AUTONIX</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle mb-4">{{ motto }}</p>
+                    
+                    <p class="hero-description mb-4">
+                        Advanced smartphone-based driver safety system combining 
+                        <span class="text-highlight">drowsiness detection</span>, 
+                        <span class="text-highlight">crash monitoring</span>, and 
+                        <span class="text-highlight">emergency response</span> capabilities.
+                    </p>
+                    
+                    <div class="cta-buttons mb-5">
+                        <a href="{% url 'main:download' %}" class="btn btn-cyber btn-cyber-primary me-3 mb-2">
+                            <span class="btn-text">
+                                <i class="fas fa-download me-2"></i>DOWNLOAD NOW
+                            </span>
+                            <span class="btn-glow"></span>
+                        </a>
+                        <a href="{% url 'main:features' %}" class="btn btn-cyber btn-cyber-secondary mb-2">
+                            <span class="btn-text">
+                                <i class="fas fa-bolt me-2"></i>EXPLORE FEATURES
+                            </span>
+                            <span class="btn-glow"></span>
+                        </a>
+                    </div>
+                    
+                    <div class="stats-row">
+                        <div class="row g-4">
+                            <div class="col-4">
+                                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="stat-value">{{ total_downloads|default:"500+" }}</div>
+                                    <div class="stat-label">DOWNLOADS</div>
+                                    <div class="stat-line"></div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                                    <div class="stat-value">10+</div>
+                                    <div class="stat-label">ANDROID</div>
+                                    <div class="stat-line"></div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                                    <div class="stat-value">24/7</div>
+                                    <div class="stat-label">MONITORING</div>
+                                    <div class="stat-line"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="hero-visual">
+                    <div class="phone-mockup-container">
+                        <div class="phone-glow"></div>
+                        <div class="phone-mockup">
+                            <div class="phone-frame">
+                                <div class="phone-notch"></div>
+                                <div class="phone-screen">
+                                    <img src="{% static 'images/screenshots/screenshot-2.png' %}" 
+                                         alt="Autonix Interface" 
+                                         class="img-fluid">
+                                    <div class="scan-effect"></div>
+                                </div>
+                            </div>
+                            <div class="floating-icons">
+                                <div class="float-icon icon-1"><i class="fas fa-eye"></i></div>
+                                <div class="float-icon icon-2"><i class="fas fa-shield-alt"></i></div>
+                                <div class="float-icon icon-3"><i class="fas fa-bell"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <div class="scroll-text">SCROLL</div>
+    </div>
+</section>
+
+<!-- Features Preview -->
+<section class="features-preview py-5 position-relative">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-bolt me-2"></i>CORE CAPABILITIES
+            </div>
+            <h2 class="section-title">ADVANCED SAFETY FEATURES</h2>
+            <p class="section-subtitle">Technology that protects every journey</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card-cyber">
+                    <div class="feature-corner tl"></div>
+                    <div class="feature-corner tr"></div>
+                    <div class="feature-corner bl"></div>
+                    <div class="feature-corner br"></div>
+                    
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-glow"></div>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h5 class="feature-title">DROWSINESS DETECTION</h5>
+                    <p class="feature-description">Real-time facial monitoring using MediaPipe technology with EAR calculation</p>
+                    <div class="feature-link">
+                        <a href="{% url 'main:features' %}">
+                            LEARN MORE <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card-cyber">
+                    <div class="feature-corner tl"></div>
+                    <div class="feature-corner tr"></div>
+                    <div class="feature-corner bl"></div>
+                    <div class="feature-corner br"></div>
+                    
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-glow"></div>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h5 class="feature-title">CRASH DETECTION</h5>
+                    <p class="feature-description">Automated emergency response with advanced sensor fusion technology</p>
+                    <div class="feature-link">
+                        <a href="{% url 'main:features' %}">
+                            LEARN MORE <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card-cyber">
+                    <div class="feature-corner tl"></div>
+                    <div class="feature-corner tr"></div>
+                    <div class="feature-corner bl"></div>
+                    <div class="feature-corner br"></div>
+                    
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-glow"></div>
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h5 class="feature-title">SMART NAVIGATION</h5>
+                    <p class="feature-description">Integrated GPS with real-time trip tracking and performance analytics</p>
+                    <div class="feature-link">
+                        <a href="{% url 'main:features' %}">
+                            LEARN MORE <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card-cyber">
+                    <div class="feature-corner tl"></div>
+                    <div class="feature-corner tr"></div>
+                    <div class="feature-corner bl"></div>
+                    <div class="feature-corner br"></div>
+                    
+                    <div class="feature-icon-wrapper">
+                        <div class="feature-icon-glow"></div>
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h5 class="feature-title">ALERT SYSTEM</h5>
+                    <p class="feature-description">Multi-level notifications from subtle warnings to emergency protocols</p>
+                    <div class="feature-link">
+                        <a href="{% url 'main:features' %}">
+                            LEARN MORE <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section py-5 position-relative">
+    <div class="about-bg-overlay"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="about-image-container">
+                    <div class="about-frame">
+                        <img src="{% static 'images/illulstration.png' %}" 
+                             alt="Autonix Safety Features" 
+                             class="img-fluid rounded">
+                        <div class="about-pulse"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-content">
+                    <div class="section-badge mb-3">
+                        <i class="fas fa-info-circle me-2"></i>ABOUT AUTONIX
+                    </div>
+                    <h2 class="section-title mb-4">SAFETY FOR ALL. ACCESSIBLE TO ALL.</h2>
+                    <p class="about-description mb-4">
+                        <span style="color: white;"><b>Autonix</b></span> represents a breakthrough in democratizing <span style="color: white;"><b>road safety technology</b></span>. 
+                        While advanced driver assistance systems have traditionally been exclusive 
+                        to luxury vehicles, we've engineered a solution that brings span style="color: white;"><b>intelligent 
+                        safety monitoring to any vehicle using just a smartphone</b></span>.
+                    </p>
+                    <p class="about-description mb-4">
+                        Our system leverages cutting-edge <span style="color: white;"><b>computer vision and sensor fusion technology</b></span> 
+                        to monitor <span style="color: white;"><b>driver alertness</b></span>, detect potentially dangerous situations, and 
+                        respond with immediate interventions. From real-time drowsiness detection 
+                        using facial landmark analysis to automated crash response with emergency 
+                        contact notification, <br><span style="color: white;"><b>Autonix ensures every journey is protected</b></span> .
+                    </p>
+                    <div class="about-stats">
+                        <div class="row g-3">
+                            <div class="col-6">
+                                <div class="about-stat-item">
+                                    <i class="fas fa-check-circle mb-2"></i>
+                                    <div class="stat-text">Real-time Monitoring</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="about-stat-item">
+                                    <i class="fas fa-mobile-alt mb-2"></i>
+                                    <div class="stat-text">Smartphone Based</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="about-stat-item">
+                                    <i class="fas fa-shield-alt mb-2"></i>
+                                    <div class="stat-text">Multi-layer Protection</div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="about-stat-item">
+                                    <i class="fas fa-users mb-2"></i>
+                                    <div class="stat-text">Family Safety</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Stack -->
+<section class="tech-stack py-5 position-relative">
+    <div class="tech-bg-pattern"></div>
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-code me-2"></i>POWERED BY
+            </div>
+            <h2 class="section-title">CUTTING-EDGE TECHNOLOGY</h2>
+            <p class="section-subtitle">Built with modern tools for maximum reliability</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="tech-grid">
+                    <div class="tech-item" data-aos="flip-left" data-aos-delay="100">
+                        <div class="tech-icon">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <div class="tech-name">ANDROID NATIVE</div>
+                        <div class="tech-pulse"></div>
+                    </div>
+                    
+                    <div class="tech-item" data-aos="flip-left" data-aos-delay="200">
+                        <div class="tech-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="tech-name">KOTLIN / JAVA</div>
+                        <div class="tech-pulse"></div>
+                    </div>
+                    
+                    <div class="tech-item" data-aos="flip-left" data-aos-delay="300">
+                        <div class="tech-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="tech-name">FIREBASE</div>
+                        <div class="tech-pulse"></div>
+                    </div>
+                    
+                    <div class="tech-item" data-aos="flip-left" data-aos-delay="400">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="tech-name">MEDIAPIPE ML</div>
+                        <div class="tech-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 position-relative overflow-hidden">
+    <div class="cta-grid-bg"></div>
+    <div class="container text-center">
+        <div data-aos="zoom-in">
+            <div class="cta-icon mb-4">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2 class="cta-title mb-3">READY TO DRIVE SAFER?</h2>
+            <p class="cta-subtitle mb-4">Join thousands of users protecting their journeys with Autonix</p>
+            <a href="{% url 'main:download' %}" class="btn btn-cyber btn-cyber-primary btn-lg">
+                <span class="btn-text">
+                    <i class="fas fa-download me-2"></i>DOWNLOAD AUTONIX NOW
+                </span>
+                <span class="btn-glow"></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Hero Section Styles */
+.hero-section {
+    min-height: 100vh;
+    position: relative;
+}
+
+.hero-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, var(--primary-red), transparent),
+        radial-gradient(2px 2px at 60px 70px, var(--primary-red), transparent),
+        radial-gradient(1px 1px at 50px 50px, var(--primary-red), transparent),
+        radial-gradient(1px 1px at 130px 80px, var(--primary-red), transparent);
+    background-size: 200px 200px;
+    animation: particleFloat 20s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes particleFloat {
+    from { background-position: 0 0; }
+    to { background-position: 200px 200px; }
+}
+
+.hero-badge span {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    animation: badgeGlow 2s ease-in-out infinite;
+}
+
+@keyframes badgeGlow {
+    0%, 100% { box-shadow: 0 0 10px var(--glow-red); }
+    50% { box-shadow: 0 0 20px var(--primary-red); }
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 900;
+    letter-spacing: 5px;
+    line-height: 1.2;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--primary-red), #ff3366, var(--primary-red));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+}
+
+.hero-subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-text);
+}
+
+.text-highlight {
+    color: var(--primary-red);
+    font-weight: 600;
+    position: relative;
+}
+
+/* Cyber Buttons */
+.btn-cyber {
+    position: relative;
+    padding: 1rem 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid var(--primary-red);
+    background: transparent;
+    color: var(--primary-red);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+}
+
+.btn-cyber-primary {
+    background: var(--primary-red);
+    color: var(--light-text);
+}
+
+.btn-cyber::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-cyber:hover::before {
+    left: 100%;
+}
+
+.btn-cyber:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--glow-red);
+}
+
+.btn-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 0, 51, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.btn-cyber:hover .btn-glow {
+    width: 300px;
+    height: 300px;
+}
+
+/* Stat Cards */
+.stat-card {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-value {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--gray-text);
+}
+
+.stat-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: statLine 2s ease-in-out infinite;
+}
+
+@keyframes statLine {
+    0%, 100% { transform: scaleX(0); }
+    50% { transform: scaleX(1); }
+}
+
+/* Phone Mockup */
+.phone-mockup-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--glow-red), transparent 70%);
+    animation: phoneGlow 3s ease-in-out infinite;
+}
+
+@keyframes phoneGlow {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.phone-mockup {
+    position: relative;
+    z-index: 2;
+}
+
+.phone-frame {
+    width: 300px;
+    padding: 15px;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    border-radius: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--border-red);
+}
+
+.phone-notch {
+    width: 60%;
+    height: 10px;
+    background: #000;
+    border-radius: 0 0 20px 20px;
+    margin: 0 auto 8px;
+}
+
+.phone-screen {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #000;
+    
+}
+
+.scan-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+    animation: scanMove 2s linear infinite;
+}
+
+@keyframes scanMove {
+    from { transform: translateY(0); }
+    to { transform: translateY(500px); }
+}
+
+.floating-icons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.float-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    color: var(--primary-red);
+    font-size: 1.5rem;
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+.icon-1 {
+    top: 10%;
+    right: -10%;
+    animation-delay: 0s;
+}
+
+.icon-2 {
+    bottom: 30%;
+    left: -15%;
+    animation-delay: 1s;
+}
+
+.icon-3 {
+    top: 50%;
+    right: -15%;
+    animation-delay: 2s;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+.scroll-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--primary-red), transparent);
+}
+
+.scroll-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--primary-red);
+}
+
+/* Feature Cards Cyber */
+.feature-card-cyber {
+    position: relative;
+    padding: 2.5rem 2rem;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--border-red);
+    height: 100%;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.feature-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary-red);
+}
+
+.feature-corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.feature-corner.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.feature-corner.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.feature-corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.feature-card-cyber:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.feature-icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--glow-red), transparent);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+}
+
+.feature-icon-wrapper i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    z-index: 2;
+}
+
+.feature-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}
+
+.feature-description {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.feature-link a {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    color: var(--primary-red);
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.feature-link a:hover {
+    color: var(--light-text);
+    padding-left: 10px;
+}
+
+/* Section Headers */
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+}
+
+/* About Section */
+/* About Section */
+.about-section {
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(255, 0, 51, 0.05));
+    position: relative;
+    overflow: hidden;
+}
+
+.about-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(90deg, transparent, transparent 2px, var(--border-red) 2px, var(--border-red) 3px),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, var(--border-red) 2px, var(--border-red) 3px);
+    background-size: 100px 100px;
+    opacity: 0.05;
+    animation: bgScroll 30s linear infinite;
+}
+
+@keyframes bgScroll {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(100px, 100px); }
+}
+
+.about-image-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-frame {
+    position: relative;
+    padding: 20px;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 20px;
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+}
+
+.about-frame img {
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(255, 0, 51, 0.3);
+}
+
+.about-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-red);
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    animation: aboutPulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes aboutPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.4;
+    }
+}
+
+.about-content {
+    padding: 2rem 0;
+}
+
+.about-description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: white;
+}
+
+.about-stats {
+    margin-top: 2rem;
+}
+
+.about-stat-item {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.about-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.about-stat-item i {
+    font-size: 2rem;
+    color: var(--primary-red);
+}
+
+.about-stat-item .stat-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    color: var(--light-text);
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-frame {
+        padding: 15px;
+    }
+    
+    .about-content {
+        padding: 1rem 0;
+    }
+    
+    .about-description {
+        font-size: 1rem;
+    }
+    
+    .about-stat-item {
+        padding: 1rem 0.5rem;
+    }
+    
+    .about-stat-item i {
+        font-size: 1.5rem;
+    }
+    
+    .about-stat-item .stat-text {
+        font-size: 0.8rem;
+    }
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.tech-item {
+    position: relative;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.tech-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 40px var(--glow-red);
+}
+
+.tech-icon {
+    font-size: 3rem;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.tech-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--light-text);
+}
+
+.tech-pulse {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--primary-red);
+    border-radius: 50%;
+    animation: techPulse 2s ease-in-out infinite;
+}
+
+@keyframes techPulse {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(3); opacity: 0; }
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, rgba(255, 0, 51, 0.1), rgba(10, 10, 10, 0.9));
+}
+
+.cta-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, var(--border-red) 1px, transparent 1px),
+        linear-gradient(0deg, var(--border-red) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    animation: gridSlide 20s linear infinite;
+}
+
+@keyframes gridSlide {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.cta-icon {
+    font-size: 4rem;
+    color: var(--primary-red);
+    animation: rocketFloat 3s ease-in-out infinite;
+}
+
+@keyframes rocketFloat {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.cta-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.cta-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .stat-card { padding: 1rem; }
+    .tech-grid { grid-template-columns: repeat(2, 1fr); }
+    .floating-icons { display: none; }
+}
+</style>
+
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100
+    });
+</script>
+{% endblock %}

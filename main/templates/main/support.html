@@ -1,0 +1,788 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="support-hero position-relative overflow-hidden">
+    <div class="circuit-bg"></div>
+    <div class="container">
+        <div class="text-center py-5">
+            <div class="hero-icon mb-4" data-aos="zoom-in">
+                <i class="fas fa-headset"></i>
+            </div>
+            <h1 class="hero-title mb-4" data-aos="fade-up">SUPPORT & CONTACT</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Get help with Autonix or reach out to our development team
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-question-circle me-2"></i>FAQ
+            </div>
+            <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+            <p class="section-subtitle">Find quick answers to common questions about Autonix</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="faq-container">
+                    {% for faq in faq_items %}
+                    <div class="faq-item" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                        <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq{{ forloop.counter }}">
+                            <div class="question-icon">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                            <div class="question-text">
+                                <span class="question-number">{{ forloop.counter|stringformat:"02d" }}</span>
+                                {{ faq.question }}
+                            </div>
+                        </div>
+                        <div id="faq{{ forloop.counter }}" class="faq-answer collapse">
+                            <div class="answer-content">
+                                <p>{{ faq.answer }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section class="contact-form-section py-5">
+    <div class="form-bg"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-box" data-aos="zoom-in">
+                    <div class="box-corner tl"></div>
+                    <div class="box-corner tr"></div>
+                    <div class="box-corner bl"></div>
+                    <div class="box-corner br"></div>
+                    
+                    <div class="text-center mb-5">
+                        <h2 class="contact-heading">GET IN TOUCH</h2>
+                        <div class="heading-line"></div>
+                        <p class="contact-subtitle">Have a question or need assistance? Send us a message!</p>
+                    </div>
+                    
+                    <form method="post" class="cyber-form">
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">NAME</label>
+                                    <div class="input-wrapper">
+                                        {{ form.name }}
+                                        <div class="input-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label">EMAIL</label>
+                                    <div class="input-wrapper">
+                                        {{ form.email }}
+                                        <div class="input-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">SUBJECT</label>
+                                    <div class="input-wrapper">
+                                        {{ form.subject }}
+                                        <div class="input-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label">MESSAGE</label>
+                                    <div class="input-wrapper">
+                                        {{ form.message }}
+                                        <div class="input-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn-submit">
+                                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                                    <span class="btn-text">SEND MESSAGE</span>
+                                    <span class="btn-glow"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Support Resources -->
+<section class="support-resources py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-book-open me-2"></i>RESOURCES
+            </div>
+            <h2 class="section-title">ADDITIONAL RESOURCES</h2>
+            <p class="section-subtitle">Helpful resources and documentation</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <h5 class="resource-title">USER MANUAL</h5>
+                    <p class="resource-description">Complete guide to using Autonix features and settings</p>
+                    <a href="#" class="resource-link">
+                        VIEW GUIDE <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-tools"></i>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <h5 class="resource-title">TROUBLESHOOTING</h5>
+                    <p class="resource-description">Solutions to common issues and technical problems</p>
+                    <a href="#" class="resource-link">
+                        GET HELP <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fab fa-github"></i>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <h5 class="resource-title">SOURCE CODE</h5>
+                    <p class="resource-description">Access the open-source codebase and contribute</p>
+                    <a href="#" class="resource-link">
+                        VIEW CODE <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-comments"></i>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <h5 class="resource-title">COMMUNITY</h5>
+                    <p class="resource-description">Join discussions and connect with other users</p>
+                    <a href="#" class="resource-link">
+                        JOIN NOW <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information -->
+<section class="contact-info py-5">
+    <div class="info-grid-bg"></div>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h5 class="info-title">EMAIL SUPPORT</h5>
+                    <p class="info-text">support@autonix.app</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h5 class="info-title">DEVELOPED AT</h5>
+                    <p class="info-text">Royal College of Arts, Science & Commerce, Mira Road (East)</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h5 class="info-title">DEVELOPMENT TEAM</h5>
+                    <p class="info-text">Maizah Shaikh & Yatin Anchan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Support Hero */
+.support-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, rgba(255, 0, 51, 0.15), rgba(10, 10, 10, 0.9));
+}
+
+.circuit-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, var(--border-red) 2px, transparent 2px),
+        radial-gradient(circle at 80% 50%, var(--border-red) 2px, transparent 2px);
+    background-size: 100px 100px;
+    opacity: 0.1;
+    animation: circuitPulse 4s ease-in-out infinite;
+}
+
+@keyframes circuitPulse {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+}
+
+.hero-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    position: relative;
+}
+
+.hero-icon::after {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    border: 1px solid var(--border-red);
+    border-radius: 50%;
+    animation: iconWave 3s linear infinite;
+}
+
+@keyframes iconWave {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+.hero-icon i {
+    font-size: 3rem;
+    color: var(--primary-red);
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+}
+
+/* FAQ Section */
+.section-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--primary-red);
+    box-shadow: 0 5px 20px var(--glow-red);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.faq-question:hover {
+    background: rgba(255, 0, 51, 0.1);
+}
+
+.question-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.question-icon i {
+    color: var(--primary-red);
+    transition: transform 0.3s ease;
+}
+
+.faq-question[aria-expanded="true"] .question-icon i {
+    transform: rotate(90deg);
+}
+
+.question-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--light-text);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.question-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    color: var(--primary-red);
+    opacity: 0.5;
+}
+
+.faq-answer {
+    border-top: 1px solid var(--border-red);
+}
+
+.answer-content {
+    padding: 1.5rem 2rem;
+    padding-left: 5.5rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contact Form */
+.contact-form-section {
+    position: relative;
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.form-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        var(--border-red) 2px,
+        var(--border-red) 3px
+    );
+    opacity: 0.05;
+}
+
+.contact-box {
+    position: relative;
+    padding: 3rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 20px;
+}
+
+.box-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--primary-red);
+}
+
+.box-corner.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.box-corner.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.box-corner.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.box-corner.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.contact-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.heading-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+    margin: 0 auto 1.5rem;
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+}
+
+.cyber-form .form-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--primary-red);
+    margin-bottom: 0.75rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.cyber-form {
+    color-scheme: dark; /* Tell browser this is a dark theme */
+}
+
+.input-wrapper input,
+.input-wrapper textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 8px;
+    color: var(--light-text);  /* This makes the typed text white */
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.input-wrapper textarea {
+    min-height: 150px;
+    resize: vertical;
+     color: var(--light-text);
+}
+
+.input-wrapper input:focus,
+.input-wrapper textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 20px var(--glow-red);
+    background: rgba(255, 0, 51, 0.1);
+}
+
+.input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-red);
+    transition: width 0.3s ease;
+}
+
+.input-wrapper input:focus ~ .input-line,
+.input-wrapper textarea:focus ~ .input-line {
+    width: 100%;
+}
+
+.btn-submit {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 3rem;
+    background: var(--primary-red);
+    border: 2px solid var(--primary-red);
+    color: var(--light-text);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--glow-red);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+.btn-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.btn-submit:hover .btn-glow {
+    width: 300px;
+    height: 300px;
+}
+
+/* Support Resources */
+.resource-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.resource-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--glow-red), transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-red);
+    box-shadow: 0 20px 40px var(--glow-red);
+}
+
+.resource-card:hover::before {
+    opacity: 0.3;
+}
+
+.resource-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resource-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    position: relative;
+    z-index: 2;
+}
+
+.icon-ring {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    animation: ringPulse 3s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0; }
+}
+
+.resource-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.resource-description {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.resource-link {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--primary-red);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.resource-link:hover {
+    color: var(--light-text);
+    padding-left: 10px;
+}
+
+/* Contact Information */
+.contact-info {
+    padding: 6rem 0;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 0, 51, 0.05), rgba(10, 10, 10, 0.9));
+}
+
+.info-grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, var(--border-red) 1px, transparent 1px),
+        linear-gradient(0deg, var(--border-red) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.05;
+}
+
+.info-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.info-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover .info-icon {
+    transform: rotateY(360deg);
+    border-color: var(--primary-red);
+}
+
+.info-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+}
+
+.info-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.info-text {
+    font-size: 1rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .contact-box { padding: 2rem 1.5rem; }
+    .answer-content { padding-left: 2rem; }
+    .faq-question { padding: 1rem 1.5rem; }
+}
+</style>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+    
+    // FAQ Accordion functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+    });
+</script>
+{% endblock %}

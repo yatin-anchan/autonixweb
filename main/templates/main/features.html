@@ -1,0 +1,682 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="features-hero position-relative overflow-hidden">
+    <div class="hero-lines"></div>
+    <div class="container">
+        <div class="text-center py-5">
+            <div class="hero-badge mb-4" data-aos="fade-down">
+                <i class="fas fa-bolt me-2"></i>SYSTEM CAPABILITIES
+            </div>
+            <h1 class="hero-title mb-4" data-aos="fade-up">ADVANCED SAFETY FEATURES</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Comprehensive driver monitoring powered by cutting-edge AI technology
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Main Features -->
+<section class="main-features py-5">
+    <div class="container">
+        {% for feature in features %}
+        <div class="feature-block mb-5" data-aos="fade-up">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-2{% endif %}">
+                    <div class="feature-content-box">
+                        <div class="feature-number">0{{ forloop.counter }}</div>
+                        
+                        <div class="feature-icon-large mb-4">
+                            <div class="icon-hex">
+                                <i class="{{ feature.icon }}"></i>
+                            </div>
+                        </div>
+                        
+                        <h2 class="feature-heading mb-3">{{ feature.title }}</h2>
+                        <p class="feature-desc mb-4">{{ feature.description }}</p>
+                        
+                        {% if feature.title == 'Drowsiness Detection System' %}
+                        <div class="tech-specs">
+                            <div class="spec-header">
+                                <i class="fas fa-microchip me-2"></i>TECHNICAL IMPLEMENTATION
+                            </div>
+                            <ul class="spec-list">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>MediaPipe FaceMesh integration for facial landmark detection</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Eye Aspect Ratio (EAR) calculation for precise drowsiness measurement</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Real-time processing with 30+ FPS performance</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Adaptive thresholds for individual driver patterns</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        {% elif feature.title == 'Crash Detection & Emergency Response' %}
+                        <div class="tech-specs">
+                            <div class="spec-header">
+                                <i class="fas fa-cogs me-2"></i>SENSOR FUSION TECHNOLOGY
+                            </div>
+                            <ul class="spec-list">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Accelerometer and gyroscope data fusion</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>GPS coordinate tracking for emergency services</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>30-second countdown system with user cancellation</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Automated SMS alerts with location details</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        {% elif feature.title == 'Smart Trip Planning' %}
+                        <div class="tech-specs">
+                            <div class="spec-header">
+                                <i class="fas fa-route me-2"></i>NAVIGATION FEATURES
+                            </div>
+                            <ul class="spec-list">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>OSMdroid integration for offline mapping</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Real-time route optimization</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Performance tracking and analytics</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Trip assignment for fleet management</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        {% else %}
+                        <div class="tech-specs">
+                            <div class="spec-header">
+                                <i class="fas fa-bell me-2"></i>ALERT SYSTEM
+                            </div>
+                            <ul class="spec-list">
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Progressive alert escalation</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Visual, audio, and haptic notifications</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>Emergency contact integration</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-angle-right"></i>
+                                    <span>SOS signaling with flashlight and sound</span>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-1{% endif %}">
+                    <div class="feature-visual">
+                        <div class="visual-frame">
+                            <div class="frame-corner tl"></div>
+                            <div class="frame-corner tr"></div>
+                            <div class="frame-corner bl"></div>
+                            <div class="frame-corner br"></div>
+                            <img src="{% static 'images/features/feature-' %}{{ forloop.counter }}.jpg" 
+                                 alt="{{ feature.title }}" 
+                                 class="img-fluid">
+                            <div class="scan-overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- System Requirements -->
+<section class="system-requirements py-5 position-relative">
+    <div class="req-bg-pattern"></div>
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-server me-2"></i>SPECIFICATIONS
+            </div>
+            <h2 class="section-title">SYSTEM REQUIREMENTS</h2>
+            <p class="section-subtitle">Minimum specifications for optimal Autonix performance</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="requirements-grid">
+                    <div class="requirement-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="req-icon-box">
+                            <i class="fab fa-android"></i>
+                        </div>
+                        <div class="req-details">
+                            <h5 class="req-title">ANDROID VERSION</h5>
+                            <p class="req-value">Android 10.0 or higher</p>
+                        </div>
+                        <div class="req-line"></div>
+                    </div>
+                    
+                    <div class="requirement-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="req-icon-box">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <div class="req-details">
+                            <h5 class="req-title">MEMORY</h5>
+                            <p class="req-value">Minimum 3GB RAM</p>
+                        </div>
+                        <div class="req-line"></div>
+                    </div>
+                    
+                    <div class="requirement-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="req-icon-box">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="req-details">
+                            <h5 class="req-title">CAMERA</h5>
+                            <p class="req-value">720p front-facing camera</p>
+                        </div>
+                        <div class="req-line"></div>
+                    </div>
+                    
+                    <div class="requirement-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="req-icon-box">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <div class="req-details">
+                            <h5 class="req-title">STORAGE</h5>
+                            <p class="req-value">50MB free space</p>
+                        </div>
+                        <div class="req-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-download py-5">
+    <div class="container">
+        <div class="cta-box" data-aos="flip-up">
+            <div class="cta-glow"></div>
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="cta-heading mb-2">EXPERIENCE ADVANCED SAFETY</h2>
+                    <p class="cta-text mb-0">Download Autonix today and make every journey safer</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <a href="{% url 'main:download' %}" class="btn btn-cyber btn-cyber-primary btn-lg">
+                        <span class="btn-text">
+                            <i class="fas fa-download me-2"></i>DOWNLOAD NOW
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Features Hero */
+.features-hero {
+    padding: 8rem 0 4rem;
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 0, 51, 0.1), rgba(10, 10, 10, 0.9));
+}
+
+.hero-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        var(--border-red) 2px,
+        var(--border-red) 4px
+    );
+    opacity: 0.05;
+    animation: linesMove 20s linear infinite;
+}
+
+@keyframes linesMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(40px); }
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 5px;
+    background: linear-gradient(135deg, var(--primary-red), #ff3366);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Feature Blocks */
+.feature-block {
+    padding: 3rem 0;
+    position: relative;
+}
+
+.feature-block::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-red), transparent);
+}
+
+.feature-block:last-child::after {
+    display: none;
+}
+
+.feature-content-box {
+    position: relative;
+}
+
+.feature-number {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 0, 51, 0.1);
+    line-height: 1;
+    z-index: -1;
+}
+
+.feature-icon-large {
+    display: inline-block;
+}
+
+.icon-hex {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.icon-hex::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    background: rgba(255, 0, 51, 0.05);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+}
+
+.icon-hex i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    z-index: 2;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.feature-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--light-text);
+}
+
+.feature-desc {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    line-height: 1.8;
+}
+
+/* Tech Specs */
+.tech-specs {
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 10px;
+    padding: 2rem;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.spec-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--primary-red);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-red);
+}
+
+.spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spec-list li {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    color: var(--light-text);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.spec-list li:hover {
+    padding-left: 10px;
+}
+
+.spec-list li i {
+    color: var(--primary-red);
+    margin-right: 1rem;
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+/* Feature Visual */
+.feature-visual {
+    position: relative;
+}
+
+.visual-frame {
+    position: relative;
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(255, 0, 51, 0.2);
+}
+
+.frame-corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--primary-red);
+    z-index: 2;
+}
+
+.frame-corner.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.frame-corner.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.frame-corner.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.frame-corner.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.visual-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+    animation: scanDown 3s linear infinite;
+}
+
+@keyframes scanDown {
+    from { transform: translateY(0); }
+    to { transform: translateY(500px); }
+}
+
+/* System Requirements */
+.system-requirements {
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.req-bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, var(--border-red) 1px, transparent 1px);
+    background-size: 30px 30px;
+    opacity: 0.1;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.requirement-card {
+    position: relative;
+    padding: 2rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.requirement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.req-icon-box {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+}
+
+.req-icon-box i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+}
+
+.req-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.req-value {
+    font-size: 1rem;
+    color: var(--gray-text);
+    margin-bottom: 0;
+}
+
+.req-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--primary-red);
+    animation: reqPulse 2s ease-in-out infinite;
+}
+
+@keyframes reqPulse {
+    0%, 100% { opacity: 0.3; width: 60%; }
+    50% { opacity: 1; width: 80%; }
+}
+
+/* CTA Section */
+.cta-download {
+    padding: 6rem 0;
+}
+
+.cta-box {
+    position: relative;
+    padding: 3rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 20px;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+}
+
+.cta-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--glow-red), transparent);
+    transform: translate(-50%, -50%);
+    animation: ctaGlow 3s ease-in-out infinite;
+}
+
+@keyframes ctaGlow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.6; }
+}
+
+.cta-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    position: relative;
+    z-index: 2;
+}
+
+/* Cyber Button */
+.btn-cyber {
+    position: relative;
+    padding: 1rem 2.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 2px solid var(--primary-red);
+    background: var(--primary-red);
+    color: var(--light-text);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+    z-index: 2;
+}
+
+.btn-cyber:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--glow-red);
+    color: var(--light-text);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .feature-number { font-size: 4rem; top: -15px; }
+    .feature-heading { font-size: 1.5rem; }
+    .requirements-grid { grid-template-columns: 1fr; }
+    .cta-box { padding: 2rem; }
+}
+</style>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+</script>
+{% endblock %}

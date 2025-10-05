@@ -1,0 +1,784 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="download-hero position-relative overflow-hidden">
+    <div class="data-stream"></div>
+    <div class="container">
+        <div class="text-center py-5">
+            <div class="hero-icon mb-4" data-aos="zoom-in">
+                <i class="fas fa-download"></i>
+            </div>
+            <h1 class="hero-title mb-4" data-aos="fade-up">DOWNLOAD AUTONIX</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                Get the intelligent driver safety system on your Android device
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Download Options -->
+<section id="download-options" class="download-options py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                {% if versions %}
+                    {% for version in versions %}
+                    <div class="version-card mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                        <div class="card-corner tl"></div>
+                        <div class="card-corner tr"></div>
+                        <div class="card-corner bl"></div>
+                        <div class="card-corner br"></div>
+                        
+                        <div class="version-pulse"></div>
+                        
+                        <div class="row align-items-center g-4">
+                            <div class="col-md-8">
+                                <div class="version-info">
+                                    <div class="version-label">VERSION</div>
+                                    <h3 class="version-number">v{{ version.version }}</h3>
+                                    <p class="version-notes">{{ version.release_notes|truncatewords:20 }}</p>
+                                    
+                                    <div class="version-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>{{ version.release_date|date:"M d, Y" }}</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-download"></i>
+                                            <span>{{ version.download_count }} downloads</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-file-archive"></i>
+                                            <span>{{ version.file_size_mb }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <a href="{% url 'main:download_apk' version.id %}" class="btn-download">
+                                    <span class="btn-icon"><i class="fas fa-download"></i></span>
+                                    <span class="btn-text">DOWNLOAD APK</span>
+                                    <span class="btn-shine"></span>
+                                </a>
+                                <div class="qr-section mt-4">
+                                    <div class="qr-frame">
+                                        <i class="fas fa-qrcode"></i>
+                                        <small>SCAN TO DOWNLOAD</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                <div class="coming-soon-box" data-aos="zoom-in">
+                    <div class="soon-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="soon-title">COMING SOON!</h3>
+                    <p class="soon-text">Autonix is currently in development. Stay tuned for the official release.</p>
+                    <a href="{% url 'main:support' %}" class="btn-notify">
+                        <span class="btn-text">GET NOTIFIED</span>
+                        <span class="btn-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Guide -->
+<section class="installation-guide py-5">
+    <div class="guide-bg"></div>
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-book me-2"></i>GUIDE
+            </div>
+            <h2 class="section-title">INSTALLATION STEPS</h2>
+            <p class="section-subtitle">Simple steps to install Autonix on your Android device</p>
+        </div>
+        
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="steps-container" data-aos="fade-right">
+                    <div class="step-item">
+                        <div class="step-number">
+                            <span>01</span>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h5 class="step-title">ENABLE UNKNOWN SOURCES</h5>
+                            <p class="step-description">Navigate to Settings → Security → Enable "Unknown sources" to allow APK installation from external sources.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">
+                            <span>02</span>
+                            <div class="step-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h5 class="step-title">DOWNLOAD APK FILE</h5>
+                            <p class="step-description">Click the download button above to save Autonix APK file to your device's download folder.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item">
+                        <div class="step-number">
+                            <span>03</span>
+                        </div>
+                        <div class="step-content">
+                            <h5 class="step-title">INSTALL & LAUNCH</h5>
+                            <p class="step-description">Open the downloaded APK file from your notifications or file manager and follow the installation prompts to complete setup.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="requirements-box" data-aos="fade-left">
+                    <h4 class="req-heading">SYSTEM REQUIREMENTS</h4>
+                    <div class="req-divider"></div>
+                    
+                    <div class="req-items">
+                        {% for key, value in system_requirements.items %}
+                        <div class="req-item">
+                            <div class="req-icon">
+                                {% if key == 'android' %}
+                                    <i class="fab fa-android"></i>
+                                {% elif key == 'ram' %}
+                                    <i class="fas fa-memory"></i>
+                                {% elif key == 'camera' %}
+                                    <i class="fas fa-camera"></i>
+                                {% else %}
+                                    <i class="fas fa-hdd"></i>
+                                {% endif %}
+                            </div>
+                            <div class="req-info">
+                                <h6 class="req-label">{{ key|upper }}</h6>
+                                <p class="req-spec">{{ value }}</p>
+                            </div>
+                            <div class="req-check"><i class="fas fa-check"></i></div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Alternative Downloads -->
+<section class="alternative-downloads py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <div class="section-badge">
+                <i class="fas fa-cloud-download-alt me-2"></i>OPTIONS
+            </div>
+            <h2 class="section-title">ALTERNATIVE DOWNLOAD OPTIONS</h2>
+            <p class="section-subtitle">Multiple ways to get Autonix on your device</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
+                <div class="alt-card">
+                    <div class="alt-icon">
+                        <i class="fab fa-google-play"></i>
+                    </div>
+                    <h5 class="alt-title">GOOGLE PLAY STORE</h5>
+                    <p class="alt-description">Coming soon to Google Play Store with automatic updates and security</p>
+                    <button class="btn-alt disabled">
+                        <i class="fas fa-clock me-2"></i>COMING SOON
+                    </button>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
+                <div class="alt-card">
+                    <div class="alt-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h5 class="alt-title">GITHUB RELEASES</h5>
+                    <p class="alt-description">Download source code and pre-built APKs from our GitHub repository</p>
+                    <a href="#" class="btn-alt">
+                        <i class="fas fa-external-link-alt me-2"></i>VIEW ON GITHUB
+                    </a>
+                </div>
+            </div>
+            
+            <div class="col-md-4" data-aos="flip-up" data-aos-delay="300">
+                <div class="alt-card">
+                    <div class="alt-icon">
+                        <i class="fas fa-cloud-download-alt"></i>
+                    </div>
+                    <h5 class="alt-title">DIRECT DOWNLOAD</h5>
+                    <p class="alt-description">Download directly from our secure servers with verified integrity</p>
+                    <a href="#download-options" class="btn-alt">
+                        <i class="fas fa-download me-2"></i>DOWNLOAD APK
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Download Hero */
+.download-hero {
+    padding: 8rem 0 4rem;
+    background: linear-gradient(135deg, rgba(255, 0, 51, 0.15), rgba(10, 10, 10, 0.9));
+}
+
+.data-stream {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, transparent 90%, var(--border-red) 100%);
+    background-size: 100% 20px;
+    animation: streamFlow 1s linear infinite;
+    opacity: 0.1;
+}
+
+@keyframes streamFlow {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 20px; }
+}
+
+.hero-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+}
+
+.hero-icon i {
+    font-size: 3rem;
+    color: var(--primary-red);
+    animation: downloadPulse 2s ease-in-out infinite;
+}
+
+@keyframes downloadPulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--gray-text);
+}
+
+/* Version Card */
+.version-card {
+    position: relative;
+    padding: 2.5rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.version-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.card-corner {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border: 3px solid var(--primary-red);
+}
+
+.card-corner.tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.card-corner.tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+.card-corner.bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+.card-corner.br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.version-pulse {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--glow-red), transparent 50%);
+    animation: versionPulse 4s ease-in-out infinite;
+    opacity: 0.3;
+}
+
+@keyframes versionPulse {
+    0%, 100% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1); opacity: 0.3; }
+}
+
+.version-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--gray-text);
+    margin-bottom: 0.5rem;
+}
+
+.version-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: var(--primary-red);
+    margin-bottom: 1rem;
+}
+
+.version-notes {
+    font-size: 1rem;
+    color: var(--gray-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.version-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.meta-item i {
+    color: var(--primary-red);
+}
+
+/* Download Button */
+.btn-download {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.btn-download:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--glow-red);
+    border-color: var(--primary-red);
+}
+
+.btn-icon {
+    font-size: 2rem;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+}
+
+.btn-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--light-text);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-download:hover .btn-shine {
+    left: 100%;
+}
+
+/* QR Section */
+.qr-frame {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 10px;
+}
+
+.qr-frame i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+    margin-bottom: 0.5rem;
+}
+
+.qr-frame small {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: var(--gray-text);
+}
+
+/* Coming Soon */
+.coming-soon-box {
+    text-align: center;
+    padding: 5rem 3rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 20px;
+}
+
+.soon-icon {
+    font-size: 5rem;
+    color: var(--primary-red);
+    margin-bottom: 2rem;
+    animation: rocketFloat 3s ease-in-out infinite;
+}
+
+@keyframes rocketFloat {
+    0%, 100% { transform: translateY(0) rotate(-10deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.soon-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.soon-text {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+    margin-bottom: 2rem;
+}
+
+.btn-notify {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-notify:hover {
+    background: var(--primary-red);
+    color: var(--light-text);
+    transform: translateX(5px);
+}
+
+/* Installation Guide */
+.installation-guide {
+    position: relative;
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.guide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(var(--border-red) 1px, transparent 1px);
+    background-size: 100% 50px;
+    opacity: 0.05;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 0, 51, 0.1);
+    border: 1px solid var(--border-red);
+    border-radius: 30px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-text);
+}
+
+/* Steps Container */
+.steps-container {
+    position: relative;
+}
+
+.step-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.step-number {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.step-number span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-red);
+}
+
+.step-line {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--border-red), transparent);
+}
+
+.step-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+}
+
+.step-description {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+}
+
+/* Requirements Box */
+.requirements-box {
+    padding: 2.5rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    height: 100%;
+}
+
+.req-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+.req-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-red), transparent);
+    margin-bottom: 2rem;
+}
+
+.req-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 1px solid var(--border-red);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.req-item:hover {
+    transform: translateX(10px);
+    border-color: var(--primary-red);
+}
+
+.req-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.req-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-red);
+}
+
+.req-info {
+    flex-grow: 1;
+}
+
+.req-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--gray-text);
+    margin-bottom: 0.25rem;
+}
+
+.req-spec {
+    font-size: 1rem;
+    color: var(--light-text);
+    margin-bottom: 0;
+}
+
+.req-check {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-red);
+    border-radius: 50%;
+}
+
+.req-check i {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* Alternative Cards */
+.alt-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: rgba(255, 0, 51, 0.05);
+    border: 2px solid var(--border-red);
+    border-radius: 15px;
+    height: 100%;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+
+.alt-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--glow-red);
+}
+
+.alt-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 0, 51, 0.1);
+    border: 2px solid var(--border-red);
+    border-radius: 50%;
+}
+
+.alt-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-red);
+}
+
+.alt-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.alt-description {
+    font-size: 0.95rem;
+    color: var(--gray-text);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.btn-alt {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    border: 2px solid var(--primary-red);
+    color: var(--primary-red);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-alt:hover {
+    background: var(--primary-red);
+    color: var(--light-text);
+}
+
+.btn-alt.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .version-card { padding: 1.5rem; }
+    .step-number span { width: 50px; height: 50px; }
+    .requirements-box { margin-top: 2rem; }
+}
+</style>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true });
+</script>
+{% endblock %}
